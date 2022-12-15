@@ -8,6 +8,10 @@ import {StoreModule} from '@ngrx/store'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 import {environment} from 'src/environments/environment'
 import {EffectsModule} from '@ngrx/effects'
+import {TopBarModule} from './shared/modules/topBar/topBar.module'
+import {PersistanceService} from './shared/services/persistance.service'
+import {AuthInterseptor} from './shared/services/authInterseptor.service'
+import {HTTP_INTERCEPTORS} from '@angular/common/http'
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +19,7 @@ import {EffectsModule} from '@ngrx/effects'
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+    TopBarModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
@@ -22,7 +27,14 @@ import {EffectsModule} from '@ngrx/effects'
       logOnly: environment.production,
     }),
   ],
-  providers: [],
+  providers: [
+    PersistanceService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterseptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
