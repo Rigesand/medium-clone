@@ -12,6 +12,7 @@ import {TopBarModule} from './shared/modules/topBar/topBar.module'
 import {PersistanceService} from './shared/services/persistance.service'
 import {AuthInterseptor} from './shared/services/authInterseptor.service'
 import {HTTP_INTERCEPTORS} from '@angular/common/http'
+import {GlobalFeedModule} from './globalFeed/globalFeed.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http'
       maxAge: 25,
       logOnly: environment.production,
     }),
+    GlobalFeedModule,
   ],
   providers: [
     PersistanceService,
