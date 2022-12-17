@@ -14,6 +14,8 @@ import {AuthInterseptor} from './shared/services/authInterseptor.service'
 import {HTTP_INTERCEPTORS} from '@angular/common/http'
 import {GlobalFeedModule} from './globalFeed/globalFeed.module'
 import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store'
+import {YourFeedModule} from './yourFeed/yourFeed.module'
+import {TagFeedModule} from './tagFeed/tagFeed.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +34,8 @@ import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store'
     }),
     StoreRouterConnectingModule.forRoot(),
     GlobalFeedModule,
+    YourFeedModule,
+    TagFeedModule,
   ],
   providers: [
     PersistanceService,
