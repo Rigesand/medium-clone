@@ -29,5 +29,10 @@
       HERE IS LIST OF TAGS
     </a>
   </div>
-  PAGINATION
+  <mc-pagination
+    [currentPage]="currentPage"
+    [limit]="limit"
+    [total]="(feed$|async).articlesCount"
+    [url]="baseUrl">
+  </mc-pagination>
 </div>
